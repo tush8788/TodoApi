@@ -4,6 +4,10 @@ export default class UserModel {
         return userSchema.findOne({email:email});
     }
 
+    getUserFromId(userId){
+        return userSchema.findById(userId);
+    }
+
     createUser(name,email,password){
         return userSchema.create({name,email,password})
     }

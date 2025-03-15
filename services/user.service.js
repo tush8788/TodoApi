@@ -1,5 +1,5 @@
 import _ from "lodash";
-import jwt from 'jsonwebtoken'
+import jwt from '../utils/jwt.js'
 import UserModel from "../models/user.model.js";
 
 const signin = async (email, password) => {
@@ -7,8 +7,7 @@ const signin = async (email, password) => {
         let user = await new UserModel().getUser(email);
 
         if(_.isEmpty(user) || user.password != password) throw new Error("email or password not match");
-    
-        let token = jwt.sign({userId:user.id},'myKey',{expiresIn:'1 day'})
+        let token = jwt.createToken({userId:user.id});
         return {
             name:user.name,
             email:user.email,
@@ -25,12 +24,11 @@ const signin = async (email, password) => {
 const signup = async (name, email, password) => {
     try {
         let user = await new UserModel().getUser(email);
-
         if (!_.isEmpty(user)) throw new Error("User Already exist");
-
         user = await new UserModel().createUser(name, email, password);
-        console.log(user)
-        return
+        return {
+            message:'success'
+        }
     }
     catch (err) {
         console.log(err);

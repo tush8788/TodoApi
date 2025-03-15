@@ -12,12 +12,9 @@ const signIn = async (req,res) => {
 
 const signUp = async (req,res) => {
     try{
-        console.log(req.body)
-
         const {name,email,password} = req.body;
-        
         const resp = await userService.signup(name,email,password)
-        return res.status(200).json({message:"success"})
+        return res.status(200).json(resp)
     }catch(err){
         console.log(err);
         return res.json(500,err);

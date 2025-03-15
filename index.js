@@ -1,11 +1,14 @@
 import express from 'express'
 import router from './routes/index.js';
 import db from './utils/mongoose.js';
+import authenticate from './middelware/authenticate.js'
 
 const port = 4000;
 const app = express();
 
 app.use(express.json({}))
+
+app.use(authenticate)
 
 app.get('/healthCheck',(req,res)=>{
     return res.json(200,{message:'success'});
