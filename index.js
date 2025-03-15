@@ -7,6 +7,10 @@ const app = express();
 
 app.use(express.json({}))
 
+app.get('/healthCheck',(req,res)=>{
+    return res.json(200,{message:'success'});
+})
+
 app.use('/api',router)
 
 app.listen(port,(err)=>{
