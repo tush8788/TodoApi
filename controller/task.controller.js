@@ -15,8 +15,11 @@ const getAllTasks = async (req,res) => {
 const createTask = async (req,res) => {
     try{
         let userId = getUserIdFromHeader(req)
-        let {name,desc,url} = req.body
-        let resp = await taskService.createTask(name,desc,userId,url);
+        // console.log("req",req.body)
+        console.log("req",req.files)
+        // throw new Error("test");
+        let {name,desc} = req.body
+        let resp = await taskService.createTask(name,desc,userId,req.files.file);
         return res.status(200).json(resp);
     }
     catch(err){

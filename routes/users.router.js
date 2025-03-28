@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.post('/signin',userController.signIn)
 router.post('/signup',userController.signUp)
+router.post('/google-verify',userController.verifyGoogleToken)
 
 export default router;

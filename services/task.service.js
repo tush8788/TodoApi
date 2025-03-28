@@ -1,8 +1,12 @@
 import TaskModel from "../models/task.model.js";
 import _ from 'lodash'
-const createTask = async (name,desc,userId,url=null) => {
+import fileUploader from '../utils/fileUploader.js'
+
+const createTask = async (name,desc,userId,file) => {
     try{
-        let task = await new TaskModel().createTask(name,desc,userId,url);
+        let resp = await fileUploader(file)
+        // throw new Error("test");
+        let task = await new TaskModel().createTask(name,desc,userId,resp);
         return task
     }
     catch(err){

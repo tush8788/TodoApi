@@ -4,7 +4,8 @@ import _ from 'lodash'
 
 let whileListUrls = [
     '/api/user/signin',
-    '/api/user/signup'
+    '/api/user/signup',
+    '/api/user/google-verify'
 ]
 
 const authenticate = async (req,res,next) => {
@@ -13,11 +14,11 @@ const authenticate = async (req,res,next) => {
             let token = req?.headers['todo-token']            
             if(_.isEmpty(token)) throw new Error()
             let decode = jwt.verifyToken(token);
-        console.log("decode?.userId ",decode?.userId)
+        // console.log("decode?.userId ",decode?.userId)
             const user = await new UserModel().getUserFromId(decode?.userId)
             if(_.isEmpty(user)) {throw new Error("")}
             req.headers['_user'] = { id: user.id };
-            console.log("called next")
+            // console.log("called next")
             next();
         }else{
             next();
