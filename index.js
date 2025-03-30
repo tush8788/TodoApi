@@ -16,7 +16,7 @@ app.use(express.json({}))
 
 app.use(authenticate)
 
-app.get('/healthCheck',(req,res)=>{
+app.get('/',(req,res)=>{
     return res.json(200,{message:'success'});
 })
 
