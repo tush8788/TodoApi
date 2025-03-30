@@ -4,8 +4,10 @@ import db from './utils/mongoose.js';
 import authenticate from './middleware/authenticate.js'
 import cors from 'cors'
 import fileUpload from 'express-fileupload';
+import config from './config.js';
 
-const port = 4000;
+const port = config.PORT;
+
 const app = express();
 
 app.use(cors())
