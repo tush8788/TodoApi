@@ -3,7 +3,7 @@ import jwt from "../utils/jwt.js";
 import _ from 'lodash'
 
 let whileListUrls = [
-    '/healthCheck',
+    '/',
     '/api/user/signin',
     '/api/user/signup',
     '/api/user/google-verify'
