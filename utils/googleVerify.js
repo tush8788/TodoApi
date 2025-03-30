@@ -1,7 +1,8 @@
 import {OAuth2Client } from 'google-auth-library'
+import config from '../config.js';
 export default async (token) => {
     try{
-        let googleClientId = '123325143947-405lsr4ggsu74bt5nrujieu88db8c5jg.apps.googleusercontent.com'
+        let googleClientId = config.googleClientId
         const client = new OAuth2Client();
         const ticket = await client.verifyIdToken({
             idToken:token,

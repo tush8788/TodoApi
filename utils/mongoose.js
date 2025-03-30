@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import config from "../config.js";
 
-mongoose.connect('mongodb://localhost/task-todo')
+mongoose.connect(config.mongoDBUrl)
 
 const db = mongoose.connection;
 
