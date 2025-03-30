@@ -10,7 +10,7 @@ const port = config.PORT;
 
 const app = express();
 
-app.use(cors())
+app.use(cors({origin:'*'}))
 app.use(fileUpload())
 app.use(express.json({}))
 
